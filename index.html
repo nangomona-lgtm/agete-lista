@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Búsqueda rápida</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, sans-serif;
+      background: #111827;
+      color: #f9fafb;
+    }
+
+    body {
+      box-sizing: border-box;
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      margin-bottom: .5rem;
+    }
+
+    p {
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    form, .sites {
+      display: grid;
+      gap: .75rem;
+      margin-top: 1.5rem;
+    }
+
+    input, select, button, .sites a {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 2.8rem;
+      border: 1px solid #475569;
+      border-radius: .5rem;
+      padding: .7rem .85rem;
+      font: inherit;
+    }
+
+    input, select {
+      background: #1f2937;
+      color: #f9fafb;
+    }
+
+    button {
+      border: 0;
+      background: #2563eb;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .sites a {
+      display: flex;
+      align-items: center;
+      color: #bfdbfe;
+      text-decoration: none;
+      background: #1f2937;
+    }
+
+    .sites a:hover, .sites a:focus-visible {
+      border-color: #93c5fd;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Búsqueda rápida</h1>
+    <p>Escribe un término y elige un sitio. La búsqueda se abrirá en ese sitio; también puedes abrir cualquier página de la lista.</p>
+
+    <form id="search-form">
+      <label for="term">Término de búsqueda</label>
+      <input id="term" name="term" type="search" autocomplete="off" required>
+
+      <label for="site">Buscar en</label>
+      <select id="site" name="site">
+        <option value="pornhub">Pornhub</option>
+        <option value="xhamster">xHamster</option>
+        <option value="google">Google</option>
+        <option value="duckduckgo">DuckDuckGo</option>
+        <option value="xvideos">XVIDEOS</option>
+      </select>
+
+      <button type="submit">Buscar</button>
+    </form>
+
+    <h2>Sitios de la lista</h2>
+    <nav class="sites" aria-label="Sitios de búsqueda">
+      <a href="https://www.pornhub.com/" target="_blank" rel="noopener noreferrer">Pornhub</a>
+      <a href="https://xhamster.com/" target="_blank" rel="noopener noreferrer">xHamster</a>
+      <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">Google</a>
+      <a href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer">DuckDuckGo</a>
+      <a href="https://www.xvideos.com/" target="_blank" rel="noopener noreferrer">XVIDEOS</a>
+    </nav>
+  </main>
+
+  <script>
+    const searchUrls = {
+      pornhub: term => `https://www.pornhub.com/video/search?search=${encodeURIComponent(term)}`,
+      xhamster: term => `https://xhamster.com/search/${encodeURIComponent(term)}`,
+      google: term => `https://www.google.com/search?q=${encodeURIComponent(term)}`,
+      duckduckgo: term => `https://duckduckgo.com/?q=${encodeURIComponent(term)}`,
+      xvideos: term => `https://www.xvideos.com/?k=${encodeURIComponent(term)}`
+    };
+
+    document.getElementById("search-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const term = document.getElementById("term").value.trim();
+      const site = document.getElementById("site").value;
+      if (term) {
+        window.location.href = searchUrls[site](term);
+      }
+    });
+  </script>
+</body>
+</html>
