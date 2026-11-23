@@ -29,13 +29,13 @@
       line-height: 1.5;
     }
 
-    form, .sites {
+    form, .sites, .social-links {
       display: grid;
       gap: .75rem;
       margin-top: 1.5rem;
     }
 
-    input, select, button, .sites a {
+    input, select, button, .sites a, .social-links a {
       box-sizing: border-box;
       width: 100%;
       min-height: 2.8rem;
@@ -58,7 +58,7 @@
       cursor: pointer;
     }
 
-    .sites a {
+    .sites a, .social-links a {
       display: flex;
       align-items: center;
       color: #bfdbfe;
@@ -66,7 +66,8 @@
       background: #1f2937;
     }
 
-    .sites a:hover, .sites a:focus-visible {
+    .sites a:hover, .sites a:focus-visible,
+    .social-links a:hover, .social-links a:focus-visible {
       border-color: #93c5fd;
       text-decoration: underline;
     }
@@ -76,6 +77,24 @@
   <main>
     <h1>Búsqueda rápida</h1>
     <p>Escribe un término y elige un sitio. La búsqueda se abrirá en ese sitio; también puedes abrir cualquier página de la lista.</p>
+
+    <section aria-labelledby="social-title">
+      <h2 id="social-title">Buscar @nancygoon en redes sociales</h2>
+      <p>Abre cada red desde esta lista. Algunas pueden pedirte iniciar sesión y solo mostrar perfiles o publicaciones públicas.</p>
+      <nav class="social-links" aria-label="Buscar @nancygoon en redes sociales">
+        <a href="https://www.instagram.com/nancygoon/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@nancygoon" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://x.com/nancygoon" target="_blank" rel="noopener noreferrer">X</a>
+        <a href="https://www.facebook.com/search/top/?q=%40nancygoon" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.youtube.com/results?search_query=%40nancygoon" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://www.threads.net/search?q=%40nancygoon" target="_blank" rel="noopener noreferrer">Threads</a>
+        <a href="https://www.reddit.com/search/?q=%40nancygoon" target="_blank" rel="noopener noreferrer">Reddit</a>
+        <a href="https://www.pinterest.com/search/pins/?q=%40nancygoon" target="_blank" rel="noopener noreferrer">Pinterest</a>
+        <a href="https://www.linkedin.com/search/results/all/?keywords=%40nancygoon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.twitch.tv/search?term=%40nancygoon" target="_blank" rel="noopener noreferrer">Twitch</a>
+        <a href="https://www.snapchat.com/add/nancygoon" target="_blank" rel="noopener noreferrer">Snapchat</a>
+      </nav>
+    </section>
 
     <form id="search-form">
       <label for="term">Término de búsqueda</label>
